@@ -28,6 +28,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('clear').addEventListener('click', resetCalculator);
 
+    // Aquí agregamos el event listener para el botón decimal
+    document.getElementById('decimal').addEventListener('click', function() {
+        if (shouldResetScreen) resetScreen();
+        // Evita agregar múltiples puntos decimales
+        if (!display.textContent.includes('.')) {
+            display.textContent += this.textContent;
+        }
+    });
+    
     function resetScreen() {
         display.textContent = '';
         shouldResetScreen = false;
